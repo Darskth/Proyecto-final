@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.6.0..js"></script>
+    <link rel="stylesheet" href="formulario.css" type="text/css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https: //fonts.googleapis.com/css2? family = Source + Code + Pro & display = swap " rel=" stylesheet ">
+
+
+    <title>Formularios JQuery</title>
+</head>
+
+<body>
+    <section id="formulario">
+        <div id="mensajeErrorCampos"></div>
+
+        <h1>Formulario desde JQuery</h1>
+        <div class="Elemento-Formulario">
+            <label for="user">Usuario</label>
+            <input type="text" name="user" id="user" placeholder="Escribe tu Usuario">
+        </div>
+
+        <div class="elemento-formulario">
+            <label for="email">Ingresa tu email</label>
+            <input type="email" name="email" id="email" placeholder="correo@dominio.com">
+        </div>
+
+        <div class="elemento-formulario">
+            <label for="tel">Ingresa tu telefono</label>
+            <input type="tel" name="tel" id="tel" placeholder="0000-0000">
+        </div>
+
+        <div class="elemento-formulario">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="contraseña">
+        </div>
+
+        <div class="elemento-formulario">
+            <label for="passwordConf">Confimar Password</label>
+            <input type="password" name="passwordConf" id="passwordConf" placeholder="Confirmar">
+        </div>
+
+        <div class="elemento-formulario">
+            <input type="submit" id="botonEnviar" value="Loggin">
+        </div>
+
+        <div id="mensajeExito"></div>
+        
+        <script type="text/javascript">
+
+            function isEmail(email) {
+                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                return regex.test(email);
+            }
+
+            $("#botonEnviar").click(function () {
+                var campoVacio = "";
+                var mensajeError = "";
+
+                //validacion de campos no vacios
+                if ($("#user").val() == "") {
+                    campoVacio = campoVacio + "user<br>";
+                }
+
+                //validacion del email
+                if (isEmail($("#email").val()) == false) {
+                    mensajeError = mensajeError + "El formato del Email es incorrecto <br>";
+                }
+
+                if ($("#email").val() == "") {
+                    campoVacio = campoVacio + "Email <br>";
+                }
+
+                //validacion del telefono
+                if ($("#tel").val() == "") {
+                    campoVacio = campoVacio + "Telefono <br>";
+                }
+                if ($("#password").val() == "") {
+                    campoVacio = campoVacio + "Password <br>";
+                }
+
+                if ($("#passwordConf").val() == "") {
+                    campoVacio = campoVacio + "Password Conf <br>";
+                }
+                //validacion de password
+                if ($("#password").val() != $("#passwordConf").val()) {
+                    mensajeError = mensajeError + "Las contraseñas no coinciden <br>";
+                }
+
+                //imprimir los campos vacios y mensajes de error
+                if (campoVacio != "") {
+                    mensajeError = "<p> Los siguientes campos estan vacios: </p>" + campoVacio + mensajeError;
+                }
+                if (mensajeError != "") {
+                    $("#mensajeErrorCampos").html(mensajeError);
+                }
+
+                else {
+                    $("#mensajeExito").html("Registro Exitoso!!");
+                }
+
+
+            })
+
+        </script>
+
+
+
+
+    </section>
+
+
+
+
+
+
+</body>
+
+</html>

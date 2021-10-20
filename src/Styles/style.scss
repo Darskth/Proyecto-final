@@ -1,0 +1,30 @@
+
+@import "~ed-grid";
+@import "~edteam-style-guides/edteam-style-guides";
+
+*{
+    background-color: black;
+
+
+}
+
+.header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1.5rem  10%;
+border-bottom: fixed;
+top:0; left: 0; right: 0;
+}
+
+
+.header .navbar a{
+    margin: 0 1rem;
+font-size: 1.6rem;
+color: blue;
+}
+.header .inconos img{
+height: 20px; 
+margin-left: 2.5rem;
+font-size: 2.5rem; 
+}
